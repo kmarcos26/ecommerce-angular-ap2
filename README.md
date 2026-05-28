@@ -1,59 +1,90 @@
-# EcommerceAp2
+Ecommerce Angular AP2
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+Proyecto web tipo e-commerce desarrollado con Angular, TypeScript, Bootstrap, HTML, CSS y JSON Server como base de datos simulada.
 
-## Development server
+Este proyecto fue realizado para el curso de JavaScript Avanzado - AP2.
 
-To start a local development server, run:
+Descripción del proyecto
 
-```bash
+La aplicación simula una tienda online donde se muestran productos dinámicamente desde un archivo db.json. Además, cuenta con navegación entre páginas, login simulado, dashboard protegido y una estructura basada en componentes reutilizables.
+
+Tecnologías utilizadas
+Angular
+TypeScript
+HTML
+CSS
+Bootstrap
+JSON Server
+LocalStorage
+Páginas implementadas
+Home
+Productos
+Ofertas
+Tienda
+Contacto
+Mi Cuenta
+Login
+Dashboard
+Página 404 personalizada
+Funcionalidades principales
+Navbar reutilizable
+Footer reutilizable
+Routing entre páginas
+Página 404 para rutas inexistentes
+Login simulado con LocalStorage
+Protección del Dashboard
+Consumo de productos desde db.json
+Visualización dinámica de productos
+Uso de componentes Angular
+Uso de directivas *ngFor, *ngIf, [ngClass] y [ngStyle]
+Uso de pipes de Angular
+Diseño responsive con Bootstrap
+Instalación del proyecto
+
+Primero instalar las dependencias:
+
+npm install
+Ejecutar Angular
+
+Para levantar el proyecto Angular:
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Luego abrir en el navegador:
 
-## Code scaffolding
+http://localhost:4200/
+Ejecutar JSON Server
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Para levantar la base de datos simulada:
 
-```bash
-ng generate component component-name
-```
+npx json-server --watch db.json --port 3000
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+La API local estará disponible en:
 
-```bash
-ng generate --help
-```
+http://localhost:3000/productos
+Estructura principal
+src/
+ └── app/
+     ├── components/
+     │   ├── navbar/
+     │   └── footer/
+     ├── pages/
+     │   ├── home/
+     │   ├── productos/
+     │   ├── ofertas/
+     │   ├── tienda/
+     │   ├── contacto/
+     │   ├── mi-cuenta/
+     │   ├── login/
+     │   ├── dashboard/
+     │   └── not-found/
+     └── services/
+         └── producto.ts
+Repositorio
 
-## Building
+Repositorio GitHub:
 
-To build the project run:
+https://github.com/kmarcos26/ecommerce-angular-ap2
+Autor
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Kevin Marcos - kmarcos26
