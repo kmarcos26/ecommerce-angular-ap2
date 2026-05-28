@@ -1,0 +1,91 @@
+<section>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="fw-bold mb-1">Dashboard</h2>
+      <p class="text-muted mb-0">
+        Panel administrativo protegido para usuarios autenticados.
+      </p>
+    </div>
+
+    <button class="btn btn-danger" (click)="cerrarSesion()">
+      Cerrar sesión
+    </button>
+  </div>
+
+  <div class="alert alert-success" *ngIf="usuario">
+    Bienvenido, <strong>{{ usuario.nombre }}</strong>.
+    Rol: <strong>{{ usuario.rol }}</strong>.
+    Correo: <strong>{{ usuario.correo }}</strong>.
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm border-primary">
+        <div class="card-body">
+          <h5 class="card-title">Total de productos</h5>
+          <p class="display-5 fw-bold text-primary">
+            {{ totalProductos }}
+          </p>
+          <small class="text-muted">Productos registrados en db.json</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm border-warning">
+        <div class="card-body">
+          <h5 class="card-title">Stock limitado</h5>
+          <p class="display-5 fw-bold text-warning">
+            {{ productosStockLimitado }}
+          </p>
+          <small class="text-muted">Productos con stock menor o igual a 10</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center shadow-sm border-success">
+        <div class="card-body">
+          <h5 class="card-title">Categorías</h5>
+          <p class="display-5 fw-bold text-success">
+            {{ totalCategorias }}
+          </p>
+          <small class="text-muted">Categorías disponibles en la tienda</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="fw-bold mb-3">Resumen de productos</h4>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Producto</th>
+          <th>Categoría</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let producto of productos">
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.categoria }}</td>
+          <td>S/ {{ producto.precio }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="producto.stock > 10 ? 'bg-success' : 'bg-warning text-dark'"
+            >
+              {{ producto.stock > 10 ? 'Disponible' : 'Stock limitado' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
