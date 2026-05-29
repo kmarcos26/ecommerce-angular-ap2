@@ -1,0 +1,52 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Laptop Gamer Lenovo",
+      "imagen": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600",
+      "categoria": "Laptops",
+      "precio": 4500,
+      "stock": 12
+    },
+    {
+      "id": 2,
+      "nombre": "Mouse Gamer RGB",
+      "imagen": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=600",
+      "categoria": "Accesorios",
+      "precio": 120,
+      "stock": 25
+    },
+    {
+      "id": 3,
+      "nombre": "Teclado Mecánico",
+      "imagen": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600",
+      "categoria": "Accesorios",
+      "precio": 280,
+      "stock": 8
+    },
+    {
+      "id": 4,
+      "nombre": "Audífonos Inalámbricos",
+      "imagen": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
+      "categoria": "Audio",
+      "precio": 350,
+      "stock": 15
+    },
+    {
+      "id": 5,
+      "nombre": "Monitor Full HD",
+      "imagen": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600",
+      "categoria": "Monitores",
+      "precio": 899,
+      "stock": 6
+    },
+    {
+      "id": 6,
+      "nombre": "Smartphone Android",
+      "imagen": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600",
+      "categoria": "Celulares",
+      "precio": 1599,
+      "stock": 10
+    }
+  ]
+}
