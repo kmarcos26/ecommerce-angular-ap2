@@ -1,0 +1,16 @@
+.login-side {
+  border-radius: 22px;
+  background: linear-gradient(135deg, #163b5c, #1f4e79);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(31, 78, 121, 0.18);
+}
+
+.credential-box {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.card {
+  min-height: 100%;
+}

@@ -2,51 +2,43 @@
   "productos": [
     {
       "id": 1,
-      "nombre": "Laptop Gamer Lenovo",
-      "imagen": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600",
-      "categoria": "Laptops",
-      "precio": 4500,
-      "stock": 12
-    },
-    {
-      "id": 2,
-      "nombre": "Mouse Gamer RGB",
-      "imagen": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=600",
-      "categoria": "Accesorios",
-      "precio": 120,
-      "stock": 25
-    },
-    {
-      "id": 3,
-      "nombre": "Teclado Mecánico",
-      "imagen": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600",
-      "categoria": "Accesorios",
-      "precio": 280,
-      "stock": 8
-    },
-    {
-      "id": 4,
-      "nombre": "Audífonos Inalámbricos",
-      "imagen": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
-      "categoria": "Audio",
-      "precio": 350,
+      "nombre": "Hoodie Verde Canino",
+      "imagen": "https://images.pexels.com/photos/30617478/pexels-photo-30617478.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "categoria": "Perros",
+      "precio": 59.90,
       "stock": 15
     },
     {
-      "id": 5,
-      "nombre": "Monitor Full HD",
-      "imagen": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600",
-      "categoria": "Monitores",
-      "precio": 899,
-      "stock": 6
+      "id": 2,
+      "nombre": "Set Casual Felino",
+      "imagen": "https://images.pexels.com/photos/17730154/pexels-photo-17730154.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "categoria": "Gatos",
+      "precio": 54.90,
+      "stock": 7
     },
     {
-      "id": 6,
-      "nombre": "Smartphone Android",
-      "imagen": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600",
-      "categoria": "Celulares",
-      "precio": 1599,
-      "stock": 10
+      "id": 3,
+      "nombre": "Arnés Azul Outdoor",
+      "imagen": "https://images.pexels.com/photos/12395776/pexels-photo-12395776.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "categoria": "Accesorios",
+      "precio": 49.90,
+      "stock": 12
+    },
+    {
+      "id": 4,
+      "nombre": "Arnés Celeste Pet",
+      "imagen": "https://images.pexels.com/photos/16524649/pexels-photo-16524649.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "categoria": "Accesorios",
+      "precio": 45.90,
+      "stock": 14
+    },
+    {
+      "id": 5,
+      "nombre": "Bandana para Mascota",
+      "imagen": "https://images.pexels.com/photos/16652403/pexels-photo-16652403.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "categoria": "Accesorios",
+      "precio": 24.90,
+      "stock": 18
     }
   ]
 }

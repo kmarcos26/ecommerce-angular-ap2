@@ -26,8 +26,10 @@ import { Producto, ProductoService } from '../../services/producto';
 })
 export class Productos implements OnInit {
   productos: Producto[] = [];
-  textoBusqueda: string = '';
-  categoriaSeleccionada: string = '';
+  textoBusqueda = '';
+  categoriaSeleccionada = '';
+  cargando = true;
+  errorCarga = '';
 
   constructor(private productoService: ProductoService) {}
 
@@ -35,9 +37,11 @@ export class Productos implements OnInit {
     this.productoService.obtenerProductos().subscribe({
       next: (data) => {
         this.productos = data;
+        this.cargando = false;
       },
-      error: (error) => {
-        console.error('Error al obtener productos:', error);
+      error: () => {
+        this.errorCarga = 'No se pudieron cargar los productos. Verifica que JSON Server esté activo.';
+        this.cargando = false;
       }
     });
   }
@@ -58,5 +62,14 @@ export class Productos implements OnInit {
 
       return coincideTexto && coincideCategoria;
     });
+  }
+
+  limpiarFiltros() {
+    this.textoBusqueda = '';
+    this.categoriaSeleccionada = '';
+  }
+
+  estadoStock(producto: Producto): string {
+    return producto.stock > 10 ? 'Disponible' : 'Stock limitado';
   }
 }

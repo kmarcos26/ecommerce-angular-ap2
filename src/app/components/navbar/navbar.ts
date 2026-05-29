@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, NavigationEnd } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, NavigationEnd } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, NgIf],
+  imports: [RouterLink, RouterLinkActive, NgIf],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
 export class Navbar implements OnInit {
-  usuario: any = null;
+  usuario: { nombre: string; correo: string; rol: string } | null = null;
 
   constructor(private router: Router) {}
 
@@ -19,9 +19,7 @@ export class Navbar implements OnInit {
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.verificarSesion();
-      });
+      .subscribe(() => this.verificarSesion());
   }
 
   verificarSesion() {

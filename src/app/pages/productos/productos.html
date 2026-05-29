@@ -1,72 +1,99 @@
-<section>
-  <div class="d-flex justify-content-between align-items-center mb-4">
+<section class="page-shell">
+  <div class="page-header d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3">
     <div>
-      <h2 class="fw-bold mb-1">Productos</h2>
-      <p class="text-muted mb-0">
-        Catálogo dinámico consumido desde JSON Server.
+      <span class="eyebrow">Catálogo online</span>
+
+      <h2 class="section-title display-6">
+        <i class="bi bi-grid-3x3-gap me-2"></i>
+        Productos para perros y gatos
+      </h2>
+
+      <p class="section-lead mb-0">
+        Filtra por categoría, revisa precios y consulta el stock disponible de cada producto.
       </p>
     </div>
+
+    <button class="btn btn-outline-primary" type="button" (click)="limpiarFiltros()">
+      Limpiar filtros
+    </button>
   </div>
 
-  <div class="row g-3 mb-4">
-    <div class="col-md-8">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Buscar producto..."
-        [(ngModel)]="textoBusqueda"
-      >
-    </div>
+  <div class="glass-panel p-3 p-md-4 mb-4">
+    <div class="row g-3 align-items-center">
+      <div class="col-lg-8">
+        <label class="form-label fw-bold">Buscar producto</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ejemplo: casaca, hoodie, arnés..."
+          [(ngModel)]="textoBusqueda"
+        >
+      </div>
 
-    <div class="col-md-4">
-      <select class="form-select" [(ngModel)]="categoriaSeleccionada">
-        <option value="">Todas las categorías</option>
-        <option *ngFor="let categoria of obtenerCategorias()" [value]="categoria">
-          {{ categoria }}
-        </option>
-      </select>
+      <div class="col-lg-4">
+        <label class="form-label fw-bold">Categoría</label>
+        <select class="form-select" [(ngModel)]="categoriaSeleccionada">
+          <option value="">Todas las categorías</option>
+          <option *ngFor="let categoria of obtenerCategorias()" [value]="categoria">
+            {{ categoria }}
+          </option>
+        </select>
+      </div>
     </div>
   </div>
 
-  <div *ngIf="productosFiltrados().length === 0" class="alert alert-warning">
+  <div *ngIf="cargando" class="alert alert-info">
+    Cargando productos...
+  </div>
+
+  <div *ngIf="errorCarga" class="alert alert-danger">
+    {{ errorCarga }}
+  </div>
+
+  <div *ngIf="!cargando && !errorCarga && productosFiltrados().length === 0" class="alert alert-warning">
     No se encontraron productos con los filtros seleccionados.
   </div>
 
-  <div class="row g-4">
+  <div class="row g-4" *ngIf="!cargando && !errorCarga">
     <div class="col-12 col-sm-6 col-lg-4" *ngFor="let producto of productosFiltrados()">
-      <div class="card h-100 shadow-sm">
+      <div class="card h-100">
         <img
           [src]="producto.imagen"
-          class="card-img-top"
+          class="card-img-top product-img"
           [alt]="producto.nombre"
-          style="height: 220px; object-fit: cover;"
         >
 
-        <div class="card-body">
-          <h5 class="card-title">
-            {{ producto.nombre | uppercase }}
-          </h5>
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+            <h5 class="card-title fw-bold mb-0">
+              {{ producto.nombre | uppercase }}
+            </h5>
 
-          <p class="card-text text-muted">
-            Categoría: {{ producto.categoria }}
+            <span class="badge bg-secondary">
+              {{ producto.categoria }}
+            </span>
+          </div>
+
+          <p class="text-soft mb-3">
+            Producto seleccionado para comodidad, protección y uso diario.
           </p>
 
-          <p class="fw-bold fs-5">
+          <p class="fw-bold fs-4 mb-0 text-primary">
+            <i class="bi bi-tag me-1"></i>
             {{ producto.precio | currency:'PEN':'symbol':'1.2-2' }}
           </p>
-
-          <span
-            class="badge"
-            [ngClass]="producto.stock > 10 ? 'bg-success' : 'bg-warning text-dark'"
-          >
-            Stock: {{ producto.stock }}
-          </span>
+          <div>
+            <span class="badge" [ngClass]="producto.stock > 10 ? 'bg-success' : 'bg-warning text-dark'">
+            <i class="bi bi-box me-1"></i>
+              Stock: {{ producto.stock }}
+            </span>
+          </div>
 
           <p
-            class="mt-3 mb-0"
-            [ngStyle]="{ color: producto.stock > 10 ? 'green' : 'orange' }"
+            class="mb-0 mt-3 fw-bold"
+            [ngStyle]="{ color: producto.stock > 10 ? '#0f766e' : '#b45309' }"
           >
-            {{ producto.stock > 10 ? 'Disponible' : 'Stock limitado' }}
+            {{ estadoStock(producto) }}
           </p>
         </div>
       </div>

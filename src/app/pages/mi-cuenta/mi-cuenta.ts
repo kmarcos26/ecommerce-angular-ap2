@@ -1,29 +1,85 @@
 import { Component, OnInit } from '@angular/core';
-import { NgIf } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { NgClass, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
+interface PerfilUsuario {
+  nombre: string;
+  correo: string;
+  telefono: string;
+  direccion: string;
+  mascotaPreferida: string;
+  instagram: string;
+  whatsapp: string;
+  notificaciones: boolean;
+}
 
 @Component({
   selector: 'app-mi-cuenta',
-  imports: [NgIf, RouterLink],
+  imports: [FormsModule, NgIf, NgClass, RouterLink],
   templateUrl: './mi-cuenta.html',
   styleUrl: './mi-cuenta.css'
 })
 export class MiCuenta implements OnInit {
-  usuario: any = null;
+  usuarioLogueado: any = null;
+  editando = false;
+  mensaje = '';
 
-  constructor(private router: Router) {}
+  perfil: PerfilUsuario = {
+    nombre: 'Cliente UrbanPet',
+    correo: 'cliente@urbanpet.com',
+    telefono: '999 888 777',
+    direccion: 'Lima, Perú',
+    mascotaPreferida: 'Perros y gatos',
+    instagram: '@urbanpetwear',
+    whatsapp: '999 888 777',
+    notificaciones: true
+  };
 
   ngOnInit() {
     const usuarioGuardado = localStorage.getItem('usuarioLogueado');
+    const perfilGuardado = localStorage.getItem('perfilUrbanPet');
 
-    if (usuarioGuardado) {
-      this.usuario = JSON.parse(usuarioGuardado);
+    this.usuarioLogueado = usuarioGuardado ? JSON.parse(usuarioGuardado) : null;
+
+    if (this.usuarioLogueado) {
+      this.perfil.nombre = this.usuarioLogueado.nombre;
+      this.perfil.correo = this.usuarioLogueado.correo;
+    }
+
+    if (perfilGuardado) {
+      this.perfil = JSON.parse(perfilGuardado);
     }
   }
 
-  cerrarSesion() {
-    localStorage.removeItem('usuarioLogueado');
-    this.usuario = null;
-    this.router.navigate(['/']);
+  activarEdicion() {
+    this.editando = true;
+    this.mensaje = '';
+  }
+
+  guardarCambios() {
+    if (!this.perfil.nombre || !this.perfil.correo || !this.perfil.telefono) {
+      this.mensaje = 'Completa nombre, correo y teléfono antes de guardar.';
+      return;
+    }
+
+    localStorage.setItem('perfilUrbanPet', JSON.stringify(this.perfil));
+    this.editando = false;
+    this.mensaje = 'Información actualizada correctamente.';
+  }
+
+  cancelarEdicion() {
+    const perfilGuardado = localStorage.getItem('perfilUrbanPet');
+
+    if (perfilGuardado) {
+      this.perfil = JSON.parse(perfilGuardado);
+    }
+
+    this.editando = false;
+    this.mensaje = '';
+  }
+
+  cambiarNotificaciones() {
+    this.perfil.notificaciones = !this.perfil.notificaciones;
   }
 }

@@ -1,12 +1,36 @@
-<section class="text-center py-5">
-  <h1 class="display-1 fw-bold">404</h1>
-  <h2>Página no encontrada</h2>
+<section class="page-shell not-found-page">
+  <div class="not-found-card">
+    <div class="paw-icon">
+      <i class="bi bi-heart-pulse-fill"></i>
+    </div>
 
-  <p class="text-muted">
-    La ruta que intentaste visitar no existe.
-  </p>
+    <span class="error-label">
+      Ruta no encontrada
+    </span>
 
-  <a routerLink="/" class="btn btn-primary mt-3">
-    Volver al Home
-  </a>
+    <h1 class="error-code">
+      404
+    </h1>
+
+    <h2 class="fw-bold">
+      Esta página se salió del paseo
+    </h2>
+
+    <p class="section-lead">
+      La ruta que intentaste visitar no existe dentro de UrbanPet Wear.
+      Puedes volver al inicio o revisar nuestro catálogo de productos.
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+      <a routerLink="/" class="btn btn-primary">
+        <i class="bi bi-house-door me-2"></i>
+        Volver al Home
+      </a>
+
+      <a routerLink="/productos" class="btn btn-outline-primary">
+        <i class="bi bi-grid-3x3-gap me-2"></i>
+        Ver productos
+      </a>
+    </div>
+  </div>
 </section>

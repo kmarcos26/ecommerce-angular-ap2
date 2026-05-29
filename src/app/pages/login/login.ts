@@ -3,6 +3,12 @@ import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
+interface UsuarioDemo {
+  nombre: string;
+  correo: string;
+  rol: string;
+}
+
 @Component({
   selector: 'app-login',
   imports: [NgIf, FormsModule, RouterLink],
@@ -10,30 +16,27 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './login.css'
 })
 export class Login implements OnInit {
-  correo: string = '';
-  password: string = '';
-  mensajeError: string = '';
-  usuario: any = null;
+  correo = '';
+  password = '';
+  mensajeError = '';
+  usuario: UsuarioDemo | null = null;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
     const usuarioGuardado = localStorage.getItem('usuarioLogueado');
-
-    if (usuarioGuardado) {
-      this.usuario = JSON.parse(usuarioGuardado);
-    }
+    this.usuario = usuarioGuardado ? JSON.parse(usuarioGuardado) : null;
   }
 
   iniciarSesion() {
     if (this.correo.trim() === '' || this.password.trim() === '') {
-      this.mensajeError = 'Debe completar todos los campos.';
+      this.mensajeError = 'Completa todos los campos.';
       return;
     }
 
-    if (this.correo === 'admin@demo.com' && this.password === '123456') {
-      const usuario = {
-        nombre: 'Administrador',
+    if (this.correo === 'admin@urbanpet.com' && this.password === '123456') {
+      const usuario: UsuarioDemo = {
+        nombre: 'Administrador UrbanPet',
         correo: this.correo,
         rol: 'Admin'
       };
@@ -42,9 +45,16 @@ export class Login implements OnInit {
       this.usuario = usuario;
       this.mensajeError = '';
       this.router.navigate(['/dashboard']);
-    } else {
-      this.mensajeError = 'Correo o contraseña incorrectos.';
+      return;
     }
+
+    this.mensajeError = 'Correo o contraseña incorrectos.';
+  }
+
+  usarDemo() {
+    this.correo = 'admin@urbanpet.com';
+    this.password = '123456';
+    this.mensajeError = '';
   }
 
   cerrarSesion() {

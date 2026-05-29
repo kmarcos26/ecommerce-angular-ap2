@@ -1,15 +1,15 @@
-<section>
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-      <h2 class="fw-bold mb-1">Dashboard</h2>
-      <p class="text-muted mb-0">
-        Panel administrativo protegido para usuarios autenticados.
-      </p>
-    </div>
+<section class="page-shell">
+  <div class="page-header">
+    <span class="eyebrow">Panel de administración</span>
 
-    <button class="btn btn-danger" (click)="cerrarSesion()">
-      Cerrar sesión
-    </button>
+    <h2 class="section-title display-6">
+      <i class="bi bi-speedometer2 me-2"></i>
+      Dashboard UrbanPet Wear
+    </h2>
+
+    <p class="section-lead">
+      Resumen de productos, stock, categorías y valor estimado del inventario.
+    </p>
   </div>
 
   <div class="alert alert-success" *ngIf="usuario">
@@ -19,73 +19,71 @@
   </div>
 
   <div class="row g-4 mb-4">
-    <div class="col-md-4">
-      <div class="card text-center shadow-sm border-primary">
-        <div class="card-body">
-          <h5 class="card-title">Total de productos</h5>
-          <p class="display-5 fw-bold text-primary">
-            {{ totalProductos }}
+    <div class="col-md-3">
+      <div class="card stat-card h-100">
+        <div class="card-body p-4">
+          <p class="text-soft mb-2">
+            <i class="bi bi-box-seam me-1"></i>
+            Productos
           </p>
-          <small class="text-muted">Productos registrados en db.json</small>
+          <h3 class="fw-bold mb-0">{{ totalProductos }}</h3>
         </div>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card text-center shadow-sm border-warning">
-        <div class="card-body">
-          <h5 class="card-title">Stock limitado</h5>
-          <p class="display-5 fw-bold text-warning">
-            {{ productosStockLimitado }}
+    <div class="col-md-3">
+      <div class="card stat-card h-100">
+        <div class="card-body p-4">
+          <p class="text-soft mb-2">
+            <i class="bi bi-archive me-1"></i>
+            Stock total
           </p>
-          <small class="text-muted">Productos con stock menor o igual a 10</small>
+          <h3 class="fw-bold mb-0">{{ totalStock }}</h3>
         </div>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card text-center shadow-sm border-success">
-        <div class="card-body">
-          <h5 class="card-title">Categorías</h5>
-          <p class="display-5 fw-bold text-success">
-            {{ totalCategorias }}
+    <div class="col-md-3">
+      <div class="card stat-card h-100">
+        <div class="card-body p-4">
+          <p class="text-soft mb-2">
+            <i class="bi bi-folder2-open me-1"></i>
+            Categorías
           </p>
-          <small class="text-muted">Categorías disponibles en la tienda</small>
+          <h3 class="fw-bold mb-0">{{ categorias }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card stat-card h-100">
+        <div class="card-body p-4">
+          <p class="text-soft mb-2">
+            <i class="bi bi-cash-coin me-1"></i>
+            Valor inventario
+          </p>
+          <h3 class="fw-bold mb-0">
+            {{ valorInventario | currency:'PEN':'symbol':'1.2-2' }}
+          </h3>
         </div>
       </div>
     </div>
   </div>
 
-  <h4 class="fw-bold mb-3">Resumen de productos</h4>
+  <div class="card">
+    <div class="card-body p-4">
+      <h5 class="fw-bold mb-3">Resumen operativo</h5>
 
-  <div class="table-responsive">
-    <table class="table table-bordered table-hover align-middle">
-      <thead class="table-dark">
-        <tr>
-          <th>Producto</th>
-          <th>Categoría</th>
-          <th>Precio</th>
-          <th>Stock</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
+      <ul class="mb-4">
+        <li>Catálogo de productos conectado a JSON Server.</li>
+        <li>Productos organizados por categoría.</li>
+        <li>Consulta visual de stock disponible.</li>
+        <li>Acceso restringido mediante sesión guardada en LocalStorage.</li>
+      </ul>
 
-      <tbody>
-        <tr *ngFor="let producto of productos">
-          <td>{{ producto.nombre }}</td>
-          <td>{{ producto.categoria }}</td>
-          <td>S/ {{ producto.precio }}</td>
-          <td>{{ producto.stock }}</td>
-          <td>
-            <span
-              class="badge"
-              [ngClass]="producto.stock > 10 ? 'bg-success' : 'bg-warning text-dark'"
-            >
-              {{ producto.stock > 10 ? 'Disponible' : 'Stock limitado' }}
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <button class="btn btn-outline-danger" (click)="cerrarSesion()">
+        Cerrar sesión
+      </button>
+    </div>
   </div>
 </section>

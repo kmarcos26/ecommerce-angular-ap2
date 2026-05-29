@@ -1,0 +1,25 @@
+.avatar-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 2.4rem;
+  background: linear-gradient(135deg, #163b5c, #1f4e79);
+  box-shadow: 0 12px 28px rgba(31, 78, 121, 0.25);
+}
+
+.linked-card {
+  padding: 18px;
+  border: 1px solid rgba(31, 41, 55, 0.1);
+  border-radius: 16px;
+  background: #f8fafc;
+}
+
+.form-control:disabled,
+.form-select:disabled,
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+}

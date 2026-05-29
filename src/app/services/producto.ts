@@ -15,7 +15,7 @@ export interface Producto {
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'https://ecommerce-angular-ap2.onrender.com/api/productos';
+  private apiUrl = 'http://localhost:3000/productos';
 
   constructor(private http: HttpClient) {}
 

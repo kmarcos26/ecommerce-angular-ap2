@@ -1,0 +1,16 @@
+.mini-stat {
+  padding: 18px;
+  border-radius: 14px;
+  background: #f3f7fb;
+  border: 1px solid rgba(31, 78, 121, 0.1);
+}
+
+.mini-stat span {
+  display: block;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.mini-stat strong {
+  color: #1f2937;
+}
