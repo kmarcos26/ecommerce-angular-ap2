@@ -1,16 +1,45 @@
 <section>
   <h2 class="fw-bold mb-3">Mi Cuenta</h2>
 
-  <div class="card">
+  <div class="card shadow-sm" *ngIf="usuario; else sinSesion">
     <div class="card-body">
-      <h5 class="card-title">Información de usuario</h5>
-      <p class="card-text">
-        En esta sección se visualizará información del usuario autenticado.
+      <h5 class="card-title">Información del usuario logueado</h5>
+
+      <p class="mb-2">
+        <strong>Nombre:</strong> {{ usuario.nombre }}
       </p>
 
-      <a routerLink="/login" class="btn btn-primary">
-        Iniciar sesión
+      <p class="mb-2">
+        <strong>Correo:</strong> {{ usuario.correo }}
+      </p>
+
+      <p class="mb-3">
+        <strong>Rol:</strong> {{ usuario.rol }}
+      </p>
+
+      <a routerLink="/dashboard" class="btn btn-primary me-2">
+        Ir al Dashboard
       </a>
+
+      <button class="btn btn-danger" (click)="cerrarSesion()">
+        Cerrar sesión
+      </button>
     </div>
   </div>
+
+  <ng-template #sinSesion>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">No has iniciado sesión</h5>
+
+        <p class="card-text">
+          Para visualizar tu información de cuenta, primero debes iniciar sesión.
+        </p>
+
+        <a routerLink="/login" class="btn btn-primary">
+          Iniciar sesión
+        </a>
+      </div>
+    </div>
+  </ng-template>
 </section>

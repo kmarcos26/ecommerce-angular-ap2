@@ -15,33 +15,46 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarMenu">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+          <a class="nav-link" routerLink="/">Home</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/productos" routerLinkActive="active">Productos</a>
+          <a class="nav-link" routerLink="/productos">Productos</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/ofertas" routerLinkActive="active">Ofertas</a>
+          <a class="nav-link" routerLink="/ofertas">Ofertas</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/tienda" routerLinkActive="active">Tienda</a>
+          <a class="nav-link" routerLink="/tienda">Tienda</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contacto" routerLinkActive="active">Contacto</a>
+          <a class="nav-link" routerLink="/contacto">Contacto</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/mi-cuenta" routerLinkActive="active">Mi Cuenta</a>
+          <a class="nav-link" routerLink="/mi-cuenta">Mi Cuenta</a>
         </li>
 
-        <li class="nav-item">
-          <a class="btn btn-primary ms-lg-3" routerLink="/login" routerLinkActive="active">Login</a>
+        <li class="nav-item" *ngIf="usuario">
+          <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+        </li>
+
+        <li class="nav-item ms-lg-3" *ngIf="!usuario">
+          <a class="btn btn-primary" routerLink="/login">Login</a>
+        </li>
+
+        <li class="nav-item ms-lg-3" *ngIf="usuario">
+          <span class="navbar-text text-white me-2">
+            {{ usuario.nombre }}
+          </span>
+          <button class="btn btn-danger btn-sm" (click)="cerrarSesion()">
+            Cerrar sesión
+          </button>
         </li>
       </ul>
     </div>
