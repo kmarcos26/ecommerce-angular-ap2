@@ -5,24 +5,52 @@
     Completa el formulario para comunicarte con nuestra tienda.
   </p>
 
-  <form class="row g-3">
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="enviado" class="alert alert-success">
+    Mensaje enviado correctamente.
+  </div>
+
+  <form class="row g-3" (ngSubmit)="enviarMensaje()">
     <div class="col-md-6">
       <label class="form-label">Nombre</label>
-      <input type="text" class="form-control" placeholder="Ingresa tu nombre">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Ingresa tu nombre"
+        name="nombre"
+        [(ngModel)]="nombre"
+      >
     </div>
 
     <div class="col-md-6">
       <label class="form-label">Correo</label>
-      <input type="email" class="form-control" placeholder="correo@ejemplo.com">
+      <input
+        type="email"
+        class="form-control"
+        placeholder="correo@ejemplo.com"
+        name="correo"
+        [(ngModel)]="correo"
+      >
     </div>
 
     <div class="col-12">
       <label class="form-label">Mensaje</label>
-      <textarea class="form-control" rows="4" placeholder="Escribe tu mensaje"></textarea>
+      <textarea
+        class="form-control"
+        rows="4"
+        placeholder="Escribe tu mensaje"
+        name="mensaje"
+        [(ngModel)]="mensaje"
+      ></textarea>
     </div>
 
     <div class="col-12">
-      <button type="button" class="btn btn-primary">Enviar mensaje</button>
+      <button type="submit" class="btn btn-primary">
+        Enviar mensaje
+      </button>
     </div>
   </form>
 </section>
