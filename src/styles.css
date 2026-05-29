@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #f6f8fb;
+}
+
+main {
+  min-height: 75vh;
+}
+
+.card {
+  border: none;
+  border-radius: 16px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  transition: 0.2s ease-in-out;
+}
+
+.btn {
+  border-radius: 10px;
+}
+
+.navbar-brand {
+  letter-spacing: 0.3px;
+}
+
+.section-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.text-soft {
+  color: #6c757d;
+}
