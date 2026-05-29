@@ -114,3 +114,4 @@ https://github.com/kmarcos26/ecommerce-angular-ap2
 ## Autor
 
 Kevin Marcos - kmarcos26
+Fernando Lagos - fvlm-hub
