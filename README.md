@@ -208,24 +208,14 @@ package.json
 angular.json
 ```
 
-## Dashboard protegido
-
-El Dashboard está protegido mediante una validación de sesión con LocalStorage.
-Si el usuario intenta ingresar directamente a `/dashboard` sin iniciar sesión, será redirigido al Home.
-
 ## Despliegue
 
-El proyecto puede desplegarse en plataformas como:
-
-* Vercel
 * Netlify
-* Firebase Hosting
-* GitHub Pages
 
 Link del proyecto desplegado:
 
 ```txt
-Colocar aquí el enlace del despliegue
+https://ecommerce-ap2.netlify.app/
 ```
 
 ## Repositorio
